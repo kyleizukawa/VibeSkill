@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pricing</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="pricing.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js" defer></script>
+</head>
+<body>
+    <div class="bg">
+        <!-- Stars/Dust -->
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        
+        <!-- Background Lighting -->
+        <div class="light-ray ray-left"></div>
+        <div class="light-ray ray-right"></div>
+        
+        <!-- Stage / Floor Elements at the bottom -->
+        <div class="stage-container">
+            <div class="stage-plane p1"></div>
+            <div class="stage-plane p2"></div>
+            <div class="stage-plane p3"></div>
+            <div class="stage-plane p4"></div>
+            <div class="stage-glow"></div>
+        </div>
+    </div>
+
+    <!-- Navigation -->
+    <!-- Centered Liquid Glass Navigation -->
+    <header class="top-nav liquid-bar">
+        <div class="nav-links">
+            <a href="index.html" class="nav-pill" style="text-decoration: none;">
+                <span>Homepage</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+            </a>
+            <a href="pricing.html" class="nav-pill" style="text-decoration: none;">
+                <span>Pricing</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+            </a>
+            <a href="features.html" class="nav-pill" style="text-decoration: none;">
+                <span>Features</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"></circle><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"></path></svg>
+            </a>
+        </div>
+        <div class="nav-auth">
+            <a href="auth.html" class="nav-pill" style="text-decoration: none;">Login</a>
+            <a href="auth.html" class="vibe-btn mini-btn" style="text-decoration: none; padding: 6px 16px;">Sign Up</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="content">
+        <h1 class="main-heading">Start Vibe-making your skills, save time,<br>and gain efficiency when coding with AI.</h1>
+        
+        <div class="beta-pill-wrapper">
+            <div class="beta-pill">
+                <div class="beta-pill-inner">
+                    <div class="avatars">
+                        <!-- Tiny default avatar svgs -->
+                        <div class="avatar"><svg viewBox="0 0 24 24" fill="#a1b2d3"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+                        <div class="avatar"><svg viewBox="0 0 24 24" fill="#8ca1c9"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+                        <div class="avatar"><svg viewBox="0 0 24 24" fill="#7890bf"><circle cx="12" cy="8" r="4"/><path d="M4 20c0-4 4-6 8-6s8 2 8 6"/></svg></div>
+                    </div>
+                    <span class="trader-count">500+ vibe-coder</span>
+                </div>
+                <span class="beta-text">in the waitlist</span>
+            </div>
+        </div>
+
+        <div style="height: 40px;"></div> <!-- Spacer -->
+
+        <!-- Simplified Two-Tier Pricing Grid -->
+        <div class="pricing-grid">
+            <!-- Free Plan -->
+            <div class="pricing-card card-dark">
+                <div class="pricing-header">
+                    <div class="header-inner">
+                        <h2>Free</h2>
+                        <p>Perfect to test out the platform and see what kind of skills you can build and see the skills editor.</p>
+                        <div class="price-display">
+                            0<span class="currency">$</span><span class="period">/month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="inclusions-divider">
+                    <div class="line"></div>
+                    <span>What's Included?</span>
+                    <div class="line"></div>
+                </div>
+                <ul class="feature-list">
+                    <li><span class="check blue-check"></span>2 skills credit / day</li>
+                    <li><span class="check blue-check"></span>5 Skills editor credits a day</li>
+                    <li><span class="check blue-check"></span>Fast skills</li>
+                </ul>
+            </div>
+
+            <!-- Pro Plan (Most Popular) -->
+            <div class="pricing-card card-pro">
+                <div class="pricing-header pro-gradient">
+                    <div class="header-inner">
+                        <h2>Pro</h2>
+                        <p>Ideal for active developer and teams, who are often building often and want to optimise their work.</p>
+                        <div class="price-display">
+                            14.99<span class="currency">$</span><span class="period">/month</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="inclusions-divider">
+                    <div class="line"></div>
+                    <span>What's Included?</span>
+                    <div class="line"></div>
+                </div>
+                <ul class="feature-list active-list">
+                    <li><span class="check pro-check"></span>Unlimited Skill credits</li>
+                    <li><span class="check pro-check"></span>Access to the github skills browser</li>
+                    <li><span class="check pro-check"></span>Download skills directly on your pc</li>
+                    <li><span class="check pro-check"></span>Invite Team members</li>
+                    <li><span class="check pro-check"></span>Access to the Turbo Ultra skills</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="bottom-cta">
+            <a href="#" class="vibe-btn">
+                Join the Waitlist
+            </a>
+        </div>
+    </main>
+    <script>
+        // Navbar scroll animation
+        let lastScroll = 0;
+        const nav = document.querySelector('.top-nav');
+        window.addEventListener('scroll', () => {
+            const currentScroll = window.pageYOffset;
+            if (currentScroll > lastScroll && currentScroll > 50) {
+                nav.style.transform = 'translateX(-50%) translateY(-100px)';
+            } else {
+                nav.style.transform = 'translateX(-50%) translateY(0)';
+            }
+            lastScroll = currentScroll;
+        });
+
+        // Waitlist Logic
+        const waitlistBtn = document.querySelector('.vibe-btn');
+        if (waitlistBtn) {
+            waitlistBtn.addEventListener('click', async (e) => {
+                e.preventDefault();
+                const email = prompt("Enter your email to join the waitlist:");
+                if (!email) return;
+
+                const originalText = waitlistBtn.innerText;
+                waitlistBtn.innerText = "Joining...";
+                waitlistBtn.disabled = true;
+
+                const { data, error } = await joinWaitlist(email);
+
+                if (error) {
+                    alert("Error: " + error.message);
+                    waitlistBtn.innerText = originalText;
+                    waitlistBtn.disabled = false;
+                } else {
+                    alert("Welcome to the list! ✨ We'll notify you soon.");
+                    waitlistBtn.innerText = "Added!";
+                    waitlistBtn.style.background = "linear-gradient(135deg, #10b981 0%, #059669 100%)";
+                    waitlistBtn.disabled = true;
+                }
+            });
+        }
+    </script>
+</body>
+</html>
