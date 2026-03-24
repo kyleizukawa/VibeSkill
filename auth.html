@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VibeSkill — Join the Vibe</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="pricing.css">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+    <script src="supabase-config.js" defer></script>
+    <style>
+        .auth-container {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+            position: relative;
+            z-index: 10;
+        }
+
+        .auth-card {
+            width: 100%;
+            max-width: 440px;
+            background: linear-gradient(135deg, rgba(255,255,255,0.12) 0%, rgba(255,255,255,0.03) 100%);
+            backdrop-filter: blur(60px) saturate(200%);
+            -webkit-backdrop-filter: blur(60px) saturate(200%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 32px;
+            padding: 48px 40px;
+            box-shadow: 
+                inset 0 3px 8px rgba(255, 255, 255, 0.15),
+                0 40px 80px rgba(0, 0, 0, 0.5);
+            text-align: center;
+            animation: cardAppear 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        @keyframes cardAppear {
+            from { opacity: 0; transform: translateY(30px) scale(0.95); filter: blur(10px); }
+            to { opacity: 1; transform: translateY(0) scale(1); filter: blur(0); }
+        }
+
+        .orb-auth {
+            width: 48px;
+            height: 48px;
+            margin: 0 auto 24px;
+            box-shadow: 
+                inset 8px 8px 16px rgba(255, 255, 255, 0.9),
+                0 6px 15px rgba(100, 180, 255, 0.4);
+        }
+
+        .auth-title {
+            font-size: 28px;
+            font-weight: 800;
+            color: #fff;
+            margin-bottom: 8px;
+            letter-spacing: -1px;
+        }
+
+        .auth-subtitle {
+            font-size: 15px;
+            color: rgba(255, 255, 255, 0.4);
+            margin-bottom: 32px;
+        }
+
+        .input-group {
+            text-align: left;
+            margin-bottom: 20px;
+        }
+
+        .input-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 8px;
+            margin-left: 4px;
+        }
+
+        .glass-input {
+            width: 100%;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 14px 18px;
+            color: white;
+            font-family: inherit;
+            font-size: 15px;
+            outline: none;
+            transition: all 0.2s;
+        }
+
+        .glass-input:focus {
+            background: rgba(255, 255, 255, 0.08);
+            border-color: rgba(59, 130, 246, 0.4);
+            box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+        }
+
+        .auth-btn {
+            width: 100%;
+            margin-top: 12px;
+            justify-content: center;
+            height: 56px;
+            font-size: 16px;
+            font-weight: 700;
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.4) 0%, rgba(30, 64, 175, 0.2) 100%);
+            backdrop-filter: blur(20px) saturate(180%);
+            -webkit-backdrop-filter: blur(20px) saturate(180%);
+            border: 1px solid rgba(255, 255, 255, 0.25);
+            border-top: 1px solid rgba(255, 255, 255, 0.5);
+            border-radius: 100px;
+            box-shadow: 
+                inset 0 4px 12px rgba(255, 255, 255, 0.3),
+                inset 0 -4px 12px rgba(0, 0, 0, 0.1),
+                0 15px 35px rgba(59, 130, 246, 0.35);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            color: #fff;
+            text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+            display: flex; /* Ensure center alignment */
+            align-items: center;
+            cursor: pointer;
+        }
+
+        .auth-btn::before {
+            content: "";
+            position: absolute;
+            top: 2px; left: 10%;
+            width: 80%; height: 35%;
+            background: linear-gradient(to bottom, rgba(255, 255, 255, 0.35) 0%, transparent 100%);
+            border-radius: 100px;
+            pointer-events: none;
+        }
+
+        .auth-btn:hover {
+            transform: scale(1.03) translateY(-3px);
+            background: linear-gradient(135deg, rgba(59, 130, 246, 0.6) 0%, rgba(37, 99, 235, 0.4) 100%);
+            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 
+                inset 0 4px 12px rgba(255, 255, 255, 0.4),
+                0 20px 45px rgba(59, 130, 246, 0.5),
+                0 0 30px rgba(59, 130, 246, 0.3);
+        }
+
+        .auth-btn:active {
+            transform: scale(0.97) translateY(0);
+        }
+
+        .auth-switch {
+            margin-top: 24px;
+            font-size: 14px;
+            color: rgba(255, 255, 255, 0.4);
+        }
+
+        .auth-switch a {
+            color: #60a5fa;
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .auth-switch a:hover { text-decoration: underline; }
+
+        .error-msg {
+            background: rgba(239, 68, 68, 0.1);
+            border: 1px solid rgba(239, 68, 68, 0.2);
+            color: #f87171;
+            padding: 12px;
+            border-radius: 12px;
+            font-size: 13px;
+            margin-bottom: 20px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="bg">
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="light-ray ray-left"></div>
+        <div class="light-ray ray-right"></div>
+    </div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="orb orb-auth"></div>
+            <h1 class="auth-title" id="auth-header">Welcome Back</h1>
+            <p class="auth-subtitle" id="auth-subheader">Sign in to your VibeSkill workspace.</p>
+
+            <div id="error-box" class="error-msg"></div>
+
+            <form id="auth-form">
+                <div class="input-group" id="name-group" style="display: none;">
+                    <label>Display Name</label>
+                    <input type="text" id="auth-name" class="glass-input" placeholder="e.g. VibeCoder">
+                </div>
+                <div class="input-group">
+                    <label>Email Address</label>
+                    <input type="email" id="auth-email" class="glass-input" placeholder="name@vibe.com" required>
+                </div>
+                <div class="input-group">
+                    <label>Password</label>
+                    <input type="password" id="auth-password" class="glass-input" placeholder="••••••••" required>
+                </div>
+
+                <button type="submit" class="vibe-btn auth-btn" id="submit-btn">Continue</button>
+            </form>
+
+            <div class="auth-switch">
+                <span id="switch-text">Don't have an account?</span>
+                <a href="#" id="auth-toggle">Create one</a>
+            </div>
+            
+            <div class="auth-switch" style="margin-top: 12px;">
+                <a href="index.html" style="color: rgba(255,255,255,0.25); font-weight: 400; font-size: 12px;">Back to Landing Page</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let isLogin = true;
+        const form = document.getElementById('auth-form');
+        const toggle = document.getElementById('auth-toggle');
+        const header = document.getElementById('auth-header');
+        const subheader = document.getElementById('auth-subheader');
+        const nameGroup = document.getElementById('name-group');
+        const switchText = document.getElementById('switch-text');
+        const errorBox = document.getElementById('error-box');
+        const submitBtn = document.getElementById('submit-btn');
+
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            isLogin = !isLogin;
+            
+            header.innerText = isLogin ? "Welcome Back" : "Join the Vibe";
+            subheader.innerText = isLogin ? "Sign in to your VibeSkill workspace." : "Start building your AI skills today.";
+            switchText.innerText = isLogin ? "Don't have an account?" : "Already a member?";
+            toggle.innerText = isLogin ? "Create one" : "Sign in";
+            nameGroup.style.display = isLogin ? "none" : "block";
+            errorBox.style.display = "none";
+        });
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            errorBox.style.display = "none";
+            submitBtn.innerText = isLogin ? "Checking..." : "Creating Account...";
+            submitBtn.disabled = true;
+
+            const email = document.getElementById('auth-email').value;
+            const password = document.getElementById('auth-password').value;
+            const displayName = document.getElementById('auth-name').value;
+
+            let result;
+            if (isLogin) {
+                result = await signIn(email, password);
+            } else {
+                result = await signUp(email, password, displayName);
+            }
+
+            if (result.error) {
+                errorBox.innerText = result.error.message;
+                errorBox.style.display = "block";
+                submitBtn.innerText = "Continue";
+                submitBtn.disabled = false;
+            } else {
+                // Success! Redirect to dashboard
+                window.location.href = "dashboard.html";
+            }
+        });
+    </script>
+</body>
+</html>
