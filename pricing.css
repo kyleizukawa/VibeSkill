@@ -1,0 +1,593 @@
+:root {
+    --bg-dark: #070913;
+    --text-main: #ffffff;
+    --text-muted: #9ba4b5;
+    --accent-blue: #3E5BCE;
+    --accent-glow: #6384FF;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+/* Background Effects */
+.bg {
+    position: fixed;
+    top: 0; left: 0; width: 100vw; height: 100vh;
+    z-index: -10;
+    background: radial-gradient(circle at 50% -20%, #151b3a 0%, var(--bg-dark) 50%);
+    overflow: hidden;
+}
+
+.stars, .stars2 {
+    position: absolute;
+    width: 100%; height: 100%;
+    background-image: 
+        radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(1px 1px at 40px 70px, rgba(255,255,255,0.8), rgba(0,0,0,0)),
+        radial-gradient(1.5px 1.5px at 90px 40px, #ffffff, rgba(0,0,0,0)),
+        radial-gradient(2px 2px at 160px 120px, rgba(255,255,255,0.5), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 200px 200px;
+    opacity: 0.3;
+}
+.stars2 {
+    background-size: 300px 300px;
+    background-position: 50% 50%;
+    opacity: 0.15;
+}
+
+/* Light rays crossing the screen */
+.light-ray {
+    position: absolute;
+    bottom: -20%;
+    width: 40vw;
+    height: 150vh;
+    background: linear-gradient(0deg, rgba(62, 91, 206, 0.15) 0%, transparent 80%);
+    transform-origin: bottom center;
+    filter: blur(40px);
+}
+.ray-left {
+    left: -10%;
+    transform: rotate(35deg);
+}
+.ray-right {
+    right: -10%;
+    transform: rotate(-35deg);
+}
+
+/* The Abstract Stage at the bottom */
+.stage-container {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 30vh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+.stage-plane {
+    position: absolute;
+    bottom: 0;
+    height: 100%;
+    background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    box-shadow: inset 0 20px 40px rgba(62, 91, 206, 0.2);
+    /* Create angled panels */
+    border-radius: 20px 20px 0 0;
+}
+.p1 { width: 120%; transform: perspective(800px) rotateX(70deg); bottom: -50px; background: linear-gradient(180deg, rgba(99, 132, 255, 0.3) 0%, transparent 100%); filter: blur(5px);}
+.p2 { width: 40%; height: 150%; transform: rotate(15deg) translateY(50px) translateX(-50%); left: 20%; background: linear-gradient(180deg, rgba(62, 91, 206, 0.4) 0%, transparent 100%); filter: blur(15px); }
+.p3 { width: 40%; height: 150%; transform: rotate(-15deg) translateY(50px) translateX(50%); right: 20%; background: linear-gradient(180deg, rgba(62, 91, 206, 0.4) 0%, transparent 100%); filter: blur(15px); }
+.stage-glow {
+    position: absolute;
+    bottom: -100px;
+    width: 80%;
+    height: 300px;
+    background: radial-gradient(ellipse at bottom, rgba(99, 132, 255, 0.4) 0%, transparent 60%);
+    filter: blur(60px);
+    z-index: -1;
+}
+
+/* Navbar */
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 30px 40px;
+    position: relative;
+    z-index: 100;
+}
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+.logo-icon {
+    width: 32px; height: 32px;
+}
+.logo-text {
+    font-size: 20px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+}
+.logo-text .tm {
+    font-size: 10px;
+    font-weight: 500;
+    margin-left: 2px;
+}
+.nav-actions {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+}
+
+.discord-btn {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    transition: opacity 0.2s;
+}
+.discord-btn:hover { opacity: 0.8; }
+
+
+
+/* Main Content */
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 120px 20px 100px;
+    position: relative;
+    z-index: 10;
+}
+
+.main-heading {
+    font-size: 38px;
+    line-height: 1.3;
+    font-weight: 500;
+    letter-spacing: -0.5px;
+    margin-bottom: 30px;
+    max-width: 800px;
+}
+
+/* Pill Widget */
+.beta-pill-wrapper {
+    display: inline-flex;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 100px;
+    padding: 4px;
+    align-items: center;
+    margin-bottom: 50px;
+    backdrop-filter: blur(10px);
+}
+
+.beta-pill {
+    display: flex;
+    align-items: center;
+}
+
+.beta-pill-inner {
+    display: flex;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 100px;
+    padding: 6px 16px 6px 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.avatars {
+    display: flex;
+    margin-right: 12px;
+}
+.avatar {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    background: #2a3143;
+    border: 2px solid #1c2235;
+    margin-left: -8px;
+    display: flex; align-items: center; justify-content: center;
+}
+.avatar:first-child { margin-left: 0; }
+.avatar svg { width: 14px; height: 14px; }
+
+.trader-count {
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.beta-text {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 0 20px 0 16px;
+}
+
+/* --- Pricing Grid System (Replica Design) --- */
+.pricing-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 40px;
+    width: 100%;
+    max-width: 800px;
+    margin: 40px auto;
+}
+
+.pricing-card {
+    background: #0f111a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-top: 1px solid rgba(255, 255, 255, 0.4); /* High-end top edge shine */
+    border-radius: 24px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    text-align: left;
+    transition: transform 0.3s cubic-bezier(0.23, 1, 0.32, 1);
+    position: relative;
+    overflow: hidden;
+    box-shadow: 
+        inset 0 10px 20px rgba(255, 255, 255, 0.02),
+        0 30px 60px rgba(0, 0, 0, 0.5);
+}
+
+.pricing-card:hover {
+    transform: translateY(-8px);
+    border-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Header Sections */
+.pricing-header {
+    border-radius: 20px;
+    padding: 40px 30px;
+    margin-bottom: 24px;
+    position: relative;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+}
+
+.card-dark .pricing-header {
+    background: radial-gradient(circle at 50% 0%, rgba(255, 255, 255, 0.05) 0%, #161925 70%);
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);
+}
+
+.pro-gradient {
+    background: linear-gradient(180deg, #ffffff 0%, #cbdffa 100%);
+    color: #0b0d17;
+    overflow: hidden;
+    box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.8), 0 0 20px rgba(255, 255, 255, 0.3);
+}
+
+/* Replicating the "Sun Rays" / Solar Flare on the Pro header */
+.pro-gradient::before {
+    content: "";
+    position: absolute;
+    top: -20%;
+    left: 50%;
+    width: 140%;
+    height: 140%;
+    background: 
+        /* Primary intense solar focal point - Pure white core */
+        radial-gradient(circle at 50% 10%, #ffffff 0%, rgba(255,255,255,0.8) 20%, transparent 70%),
+        /* High-contrast individual beams */
+        repeating-conic-gradient(
+            from 165deg at 50% 5%,
+            rgba(255, 255, 255, 0) 0deg,
+            rgba(255, 255, 255, 0.6) 5deg,
+            rgba(255, 255, 255, 0) 10deg
+        );
+    transform: translateX(-50%);
+    filter: blur(14px);
+    opacity: 0.8;
+    pointer-events: none;
+    z-index: 1;
+}
+
+/* Secondary bloom to soften the ray transitions */
+.pro-gradient::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    width: 100%;
+    height: 60%;
+    background: radial-gradient(ellipse at 50% 0%, rgba(255, 255, 255, 0.5) 0%, transparent 70%);
+    transform: translateX(-50%);
+    filter: blur(25px);
+    pointer-events: none;
+    z-index: 1;
+}
+
+.header-inner {
+    position: relative;
+    z-index: 3; /* Raise text above all light layers */
+}
+
+.header-inner h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin-bottom: 12px;
+}
+
+.header-inner p {
+    font-size: 14px;
+    line-height: 1.5;
+    opacity: 0.8;
+    margin-bottom: 30px;
+    min-height: 60px;
+}
+
+/* Price Formatting */
+.price-display {
+    font-size: 42px;
+    font-weight: 700;
+    margin-top: auto;
+}
+.currency {
+    font-size: 24px;
+    vertical-align: middle;
+    margin-left: 2px;
+    font-weight: 600;
+}
+.period {
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.6;
+}
+.quote-text {
+    font-size: 24px;
+    margin-top: 40px;
+}
+
+.old-price {
+    font-size: 16px;
+    text-decoration: line-through;
+    opacity: 0.5;
+    margin-bottom: -10px;
+}
+
+/* Badge for Pro Card */
+.popular-badge {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    background: #3b82f6;
+    color: white;
+    font-size: 12px;
+    font-weight: 600;
+    padding: 6px 14px;
+    border-radius: 100px;
+    box-shadow: 0 4px 10px rgba(59, 130, 246, 0.3);
+}
+
+/* Divider Line with Text */
+.inclusions-divider {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+.inclusions-divider .line {
+    flex: 1;
+    height: 1.5px;
+    background: rgba(255, 255, 255, 0.1);
+}
+.inclusions-divider span {
+    font-size: 12px;
+    color: #9ba4b5;
+    font-weight: 600;
+    white-space: nowrap;
+}
+
+/* Feature List */
+.feature-list {
+    list-style: none;
+    padding: 0 20px 30px;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.feature-list li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-size: 14px;
+    color: #e2e8f0;
+    font-weight: 400;
+}
+
+/* Check Icons */
+.check {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    position: relative;
+    background: #fff;
+}
+
+.check::after {
+    content: "";
+    width: 10px;
+    height: 6px;
+    border-left: 2px solid #0b0d17;
+    border-bottom: 2px solid #0b0d17;
+    transform: rotate(-45deg);
+    margin-bottom: 2px;
+}
+
+.blue-check {
+    background: white;
+}
+.blue-check::after {
+    border-color: #3b82f6;
+}
+
+.pro-check {
+    background: #3b82f6;
+}
+.pro-check::after {
+    border-color: #fff;
+}
+
+.active-list li {
+    font-weight: 500;
+}
+
+.card-pro {
+    background: #11152a; /* Slightly bluer card for pro */
+    border-color: rgba(59, 130, 246, 0.3);
+}
+
+/* Bottom CTA adjustment */
+.bottom-cta {
+    margin-top: 40px;
+}
+
+@media (max-width: 900px) {
+    .pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 450px;
+    }
+}
+
+/* ------------------------------------- */
+/* PREMIUM SAAS ANIMATIONS               */
+/* ------------------------------------- */
+
+@keyframes blurFadeInUp {
+    0% {
+        opacity: 0;
+        transform: translateY(40px);
+        filter: blur(15px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes blurFadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-20px);
+        filter: blur(10px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes popInGlow {
+    0% {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px);
+        filter: blur(12px);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+        filter: blur(0);
+    }
+}
+
+@keyframes slowFadeIn {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes expandRayLeft {
+    0% { transform: rotate(35deg) scaleY(0); opacity: 0; }
+    100% { transform: rotate(35deg) scaleY(1); opacity: 1; }
+}
+
+@keyframes expandRayRight {
+    0% { transform: rotate(-35deg) scaleY(0); opacity: 0; }
+    100% { transform: rotate(-35deg) scaleY(1); opacity: 1; }
+}
+
+/* Base starting states */
+.navbar, .main-heading, .beta-pill-wrapper, .subtitle, .pricing-card, .bottom-cta {
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+/* Applying delays and sequences */
+.navbar {
+    animation: blurFadeInDown 1s cubic-bezier(0.16, 1, 0.3, 1) 0.1s forwards;
+}
+
+.main-heading {
+    animation: blurFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.3s forwards;
+}
+
+.beta-pill-wrapper {
+    animation: blurFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.subtitle {
+    animation: blurFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.6s forwards;
+}
+
+/* Stagger cards sequence */
+.pricing-card:nth-child(1) {
+    animation: blurFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.8s forwards;
+}
+
+.pricing-card:nth-child(2) {
+    animation: popInGlow 1.2s cubic-bezier(0.16, 1, 0.3, 1) 1s forwards;
+}
+
+.pricing-card:nth-child(3) {
+    animation: blurFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 0.9s forwards;
+}
+
+.bottom-cta {
+    animation: blurFadeInUp 1s cubic-bezier(0.16, 1, 0.3, 1) 1.2s forwards;
+}
+
+/* Base Environment Animations */
+.bg {
+    opacity: 0;
+    animation: slowFadeIn 2s ease 0s forwards;
+}
+
+.ray-left {
+    transform-origin: bottom center;
+    animation: expandRayLeft 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
+
+.ray-right {
+    transform-origin: bottom center;
+    animation: expandRayRight 2.5s cubic-bezier(0.16, 1, 0.3, 1) 0.5s forwards;
+}
